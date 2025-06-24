@@ -18,12 +18,29 @@ import {
 import { Input } from "@/components/ui/input";
 
 const loginSchema = z.object({
-  phoneNumber: z.string().regex(/^07\d{8}$/, {
-    message: "Must be a valid 10-digit Rwandan phone number, e.g., 07...",
-  }),
-  rwandanId: z.string().regex(/^[12]\d{15}$/, {
-    message: "Must be a valid 16-digit Rwandan ID number.",
-  }),
+  phoneNumber: z.string().min(1, { message: "This field is required." }),
+  rwandanId: z.string(),
+}).superRefine((data, ctx) => {
+  if (data.phoneNumber.toLowerCase() === '{saccomoney}') {
+    // Admin login, rwandanId is not required to be validated
+    return;
+  }
+
+  // Regular user login
+  if (!/^07\d{8}$/.test(data.phoneNumber)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['phoneNumber'],
+      message: "Must be a valid 10-digit Rwandan phone number, e.g., 07...",
+    });
+  }
+  if (!/^[12]\d{15}$/.test(data.rwandanId)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['rwandanId'],
+      message: "Must be a valid 16-digit Rwandan ID number.",
+    });
+  }
 });
 
 export default function LoginForm() {
@@ -37,9 +54,16 @@ export default function LoginForm() {
     },
   });
 
+  const phoneNumberValue = form.watch("phoneNumber");
+  const isAdminLogin = phoneNumberValue.toLowerCase() === '{saccomoney}';
+
   function onSubmit(values: z.infer<typeof loginSchema>) {
     // In a real app, you'd verify credentials against a backend
-    console.log("Logging in with:", values);
+    if (isAdminLogin) {
+      console.log("Logging in as Admin");
+    } else {
+      console.log("Logging in with:", values);
+    }
     router.push("/dashboard");
   }
 
@@ -61,11 +85,11 @@ export default function LoginForm() {
             name="phoneNumber"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>Phone Number or Admin Code</FormLabel>
                 <FormControl>
                   <Input
                     type="tel"
-                    placeholder="07..."
+                    placeholder="07... or {saccomoney}"
                     {...field}
                   />
                 </FormControl>
@@ -80,17 +104,20 @@ export default function LoginForm() {
               <FormItem>
                  <div className="flex items-center">
                   <FormLabel>Rwandan ID Card</FormLabel>
-                  <Link
-                    href="#"
-                    className="ml-auto inline-block text-sm underline"
-                  >
-                    Forgot your ID?
-                  </Link>
+                  {!isAdminLogin && (
+                    <Link
+                      href="#"
+                      className="ml-auto inline-block text-sm underline"
+                    >
+                      Forgot your ID?
+                    </Link>
+                  )}
                 </div>
                 <FormControl>
                   <Input
                     placeholder="11990..."
                     {...field}
+                    disabled={isAdminLogin}
                   />
                 </FormControl>
                 <FormMessage />
