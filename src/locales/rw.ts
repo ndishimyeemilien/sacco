@@ -124,7 +124,8 @@ export const rw = {
             title: "Amasezerano y'inguzanyo",
             description: "Iyi ni incamake y'amasezerano yawe y'inguzanyo. Turagusaba kuyisoma witonze.",
             button: "Amasezerano",
-            download: "Manura PDF"
+            download: "Manura PDF",
+            downloading: "Bimanurwa..."
         }
     },
     withdraw: {

@@ -124,7 +124,8 @@ export const en = {
             title: "Loan Agreement Contract",
             description: "This is a preview of your loan agreement. Please review it carefully.",
             button: "Contract",
-            download: "Download PDF"
+            download: "Download PDF",
+            downloading: "Downloading..."
         }
     },
     withdraw: {

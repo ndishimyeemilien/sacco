@@ -124,7 +124,8 @@ export const fr = {
             title: "Contrat de prêt",
             description: "Ceci est un aperçu de votre contrat de prêt. Veuillez le lire attentivement.",
             button: "Contrat",
-            download: "Télécharger en PDF"
+            download: "Télécharger en PDF",
+            downloading: "Téléchargement..."
         }
     },
     withdraw: {
