@@ -199,7 +199,21 @@ export const en = {
             cardDescription: "View, edit, or manage user accounts.",
             phone: "Phone Number",
             id: "Rwandan ID",
-            dateJoined: "Date Joined"
+            dateJoined: "Date Joined",
+            actions: {
+                title: "Actions",
+                deposit: "Deposit",
+                withdraw: "Withdraw",
+                depositDialogTitle: "Make a Deposit",
+                withdrawDialogTitle: "Make a Withdrawal",
+                dialogDescription: "Enter the amount to {{action}} for {{name}} ({{phone}}).",
+                amountLabel: "Amount (RWF)",
+                amountPlaceholder: "Enter amount",
+                successTitle: "Action Successful",
+                successDesc: "Successfully processed {{action}} of RWF {{amount}} for {{name}}.",
+                invalidAmountTitle: "Invalid Amount",
+                invalidAmountDesc: "Please enter a valid amount."
+            }
         },
         loans: {
             pageTitle: "Manage Loans",

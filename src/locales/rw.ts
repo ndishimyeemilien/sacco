@@ -199,7 +199,21 @@ export const rw = {
             cardDescription: "Reba, hindura, cyangwa ucunge konti z'abakoresha.",
             phone: "Nimero ya telefone",
             id: "Indangamuntu",
-            dateJoined: "Itariki yinjiriye"
+            dateJoined: "Itariki yinjiriye",
+            actions: {
+                title: "Ibikorwa",
+                deposit: "Kubitsa",
+                withdraw: "Kubikuza",
+                depositDialogTitle: "Kora Ububiko",
+                withdrawDialogTitle: "Kora ikubikuza",
+                dialogDescription: "Shyiramo umubare wo {{action}} kuri {{name}} ({{phone}}).",
+                amountLabel: "Umubare (RWF)",
+                amountPlaceholder: "Shyiramo umubare",
+                successTitle: "Igikorwa Cyagenze neza",
+                successDesc: "Igikorwa cya {{action}} cy'amafaranga {{amount}} RWF kuri {{name}} cyakozwe neza.",
+                invalidAmountTitle: "Umubare utemewe",
+                invalidAmountDesc: "Nyamuneka shyiramo umubare wemewe."
+            }
         },
         loans: {
             pageTitle: "Gucunga inguzanyo",

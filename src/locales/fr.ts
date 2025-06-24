@@ -199,7 +199,21 @@ export const fr = {
             cardDescription: "Affichez, modifiez ou gérez les comptes utilisateurs.",
             phone: "Numéro de téléphone",
             id: "ID rwandais",
-            dateJoined: "Date d'inscription"
+            dateJoined: "Date d'inscription",
+            actions: {
+                title: "Actions",
+                deposit: "Déposer",
+                withdraw: "Retirer",
+                depositDialogTitle: "Effectuer un dépôt",
+                withdrawDialogTitle: "Effectuer un retrait",
+                dialogDescription: "Entrez le montant à {{action}} pour {{name}} ({{phone}}).",
+                amountLabel: "Montant (RWF)",
+                amountPlaceholder: "Entrez le montant",
+                successTitle: "Action réussie",
+                successDesc: "Le {{action}} de {{amount}} RWF pour {{name}} a été traité avec succès.",
+                invalidAmountTitle: "Montant invalide",
+                invalidAmountDesc: "Veuillez entrer un montant valide."
+            }
         },
         loans: {
             pageTitle: "Gérer les prêts",

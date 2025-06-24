@@ -9,9 +9,8 @@ import {
     TableRow,
   } from "@/components/ui/table";
   import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-  import { Button } from "@/components/ui/button";
-  import { MoreHorizontal } from "lucide-react";
   import { useLanguage } from "@/context/language-context";
+  import UserActions from "@/components/admin/user-actions";
   
   const users = [
     { id: 'usr_1', name: 'Alice Johnson', phone: '0788111222', idCard: '11990...', joined: '2024-07-21' },
@@ -51,9 +50,7 @@ import {
                             <TableCell className="hidden md:table-cell">{user.idCard}</TableCell>
                             <TableCell className="hidden md:table-cell">{user.joined}</TableCell>
                             <TableCell className="text-right">
-                                <Button variant="ghost" size="icon">
-                                    <MoreHorizontal className="h-4 w-4" />
-                                </Button>
+                                <UserActions user={user} />
                             </TableCell>
                         </TableRow>
                     ))}
