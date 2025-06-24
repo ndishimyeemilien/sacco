@@ -43,17 +43,15 @@ export default function AdminLayout({
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/admin/dashboard" className="flex items-center gap-2 font-semibold">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6 text-primary"
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 60 60"
+                className="h-7 w-7"
               >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                <path d="M 5,55 A 30 30 0 0 1 55 55 A 35 35 0 0 0 5 55 Z" fill="#60a5fa" />
+                <path d="M 20 40 C 22 25 30 25 32 35 L 35 30 L 30 27 L 27 32 C 26 30 22 30 20 40 Z" fill="#fbbf24" />
+                <path d="M 30 45 C 32 30 40 30 42 40 L 45 35 L 40 32 L 37 37 C 36 35 32 35 30 45 Z" fill="#facc15" />
+                <path d="M 40 50 C 42 35 50 35 52 45 L 55 40 L 50 37 L 47 42 C 46 40 42 40 40 50 Z" fill="#fde047" />
               </svg>
               <span className="font-headline">SACCO Admin</span>
             </Link>
@@ -96,17 +94,15 @@ export default function AdminLayout({
                   href="/admin/dashboard"
                   className="flex items-center gap-2 text-lg font-semibold mb-4"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-6 w-6 text-primary"
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 60 60"
+                    className="h-7 w-7"
                   >
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    <path d="M 5,55 A 30 30 0 0 1 55 55 A 35 35 0 0 0 5 55 Z" fill="#60a5fa" />
+                    <path d="M 20 40 C 22 25 30 25 32 35 L 35 30 L 30 27 L 27 32 C 26 30 22 30 20 40 Z" fill="#fbbf24" />
+                    <path d="M 30 45 C 32 30 40 30 42 40 L 45 35 L 40 32 L 37 37 C 36 35 32 35 30 45 Z" fill="#facc15" />
+                    <path d="M 40 50 C 42 35 50 35 52 45 L 55 40 L 50 37 L 47 42 C 46 40 42 40 40 50 Z" fill="#fde047" />
                   </svg>
                   <span className="font-headline">SACCO Admin</span>
                 </Link>
