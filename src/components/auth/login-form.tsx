@@ -58,13 +58,14 @@ export default function LoginForm() {
   const isAdminLogin = phoneNumberValue.toLowerCase() === '{saccomoney}';
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
-    // In a real app, you'd verify credentials against a backend
+    // In a real app, you'd verify credentials and roles against a backend
     if (isAdminLogin) {
       console.log("Logging in as Admin");
+      router.push("/admin/dashboard");
     } else {
       console.log("Logging in with:", values);
+      router.push("/dashboard");
     }
-    router.push("/dashboard");
   }
 
   return (
