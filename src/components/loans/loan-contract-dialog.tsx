@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { FileText, Download } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 type Loan = {
     id: string;
@@ -21,22 +23,24 @@ type Loan = {
 }
 
 export default function LoanContractDialog({ loan }: { loan: Loan }) {
+  const { t } = useLanguage();
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
             <FileText className="h-4 w-4 mr-2" />
-            Contract
+            {t('loans.contract.button')}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Loan Agreement Contract</DialogTitle>
+          <DialogTitle>{t('loans.contract.title')}</DialogTitle>
           <DialogDescription>
-            This is a preview of your loan agreement. Please review it carefully.
+            {t('loans.contract.description')}
           </DialogDescription>
         </DialogHeader>
         <div className="prose prose-sm dark:prose-invert max-h-[60vh] overflow-y-auto rounded-md border p-4 my-4 bg-muted">
+            {/* This content is just an example and would ideally be generated dynamically */}
             <h2 className="text-center font-headline">Loan Agreement</h2>
             <p><strong>Date:</strong> {new Date().toLocaleDateString()}</p>
             <p>
@@ -79,7 +83,7 @@ export default function LoanContractDialog({ loan }: { loan: Loan }) {
         <DialogFooter>
           <Button type="button">
             <Download className="h-4 w-4 mr-2" />
-            Download PDF
+            {t('loans.contract.download')}
           </Button>
         </DialogFooter>
       </DialogContent>

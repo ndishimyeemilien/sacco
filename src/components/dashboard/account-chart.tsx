@@ -1,9 +1,11 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { useLanguage } from '@/context/language-context';
 
 const chartConfig = {
   total: {
@@ -29,6 +31,7 @@ const initialData = [
 
 export default function AccountChart() {
   const [chartData, setChartData] = useState(initialData);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setChartData(initialData.map(item => ({...item, total: Math.floor(Math.random() * 5000) + 1000})))
@@ -37,8 +40,8 @@ export default function AccountChart() {
   return (
     <Card>
         <CardHeader>
-            <CardTitle>Account Overview</CardTitle>
-            <CardDescription>Your account activity over the year.</CardDescription>
+            <CardTitle>{t('dashboard.chart.title')}</CardTitle>
+            <CardDescription>{t('dashboard.chart.description')}</CardDescription>
         </CardHeader>
         <CardContent>
             <ChartContainer config={chartConfig} className="h-[300px] w-full">

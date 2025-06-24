@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -12,40 +13,38 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
-const tickets = [
-    { id: 'tkt_1', date: '2024-07-18', subject: 'Delayed withdrawal', status: 'Open' },
-    { id: 'tkt_2', date: '2024-07-12', subject: 'Question about loan interest', status: 'Closed' },
-    { id: 'tkt_3', date: '2024-06-25', subject: 'How to update my profile?', status: 'Closed' },
-    { id: 'tkt_4', date: '2024-07-20', subject: 'Login problem on mobile', status: 'Open' },
-];
-
-const getBadgeVariant = (status: string) => {
-    switch (status) {
-        case 'Open':
-            return 'default';
-        case 'Closed':
-            return 'secondary';
-        default:
-            return 'secondary';
-    }
-}
+import { useLanguage } from "@/context/language-context";
 
 export default function SupportTicketsTable() {
+    const { t } = useLanguage();
+
+    const getBadgeVariant = (status: string) => {
+        if (status === t('support.status.open')) return 'default';
+        if (status === t('support.status.closed')) return 'secondary';
+        return 'secondary';
+    }
+
+    const tickets = [
+        { id: 'tkt_1', date: '2024-07-18', subject: 'Delayed withdrawal', status: t('support.status.open') },
+        { id: 'tkt_2', date: '2024-07-12', subject: 'Question about loan interest', status: t('support.status.closed') },
+        { id: 'tkt_3', date: '2024-06-25', subject: 'How to update my profile?', status: t('support.status.closed') },
+        { id: 'tkt_4', date: '2024-07-20', subject: 'Login problem on mobile', status: t('support.status.open') },
+    ];
+    
     return (
         <Card className="w-full">
             <CardHeader>
-                <CardTitle>My Support Tickets</CardTitle>
-                <CardDescription>A list of your support requests.</CardDescription>
+                <CardTitle>{t('support.table.title')}</CardTitle>
+                <CardDescription>{t('support.table.description')}</CardDescription>
             </CardHeader>
             <CardContent>
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="hidden sm:table-cell">Date</TableHead>
-                            <TableHead>Subject</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead><span className="sr-only">Actions</span></TableHead>
+                            <TableHead className="hidden sm:table-cell">{t('common.date')}</TableHead>
+                            <TableHead>{t('common.subject')}</TableHead>
+                            <TableHead>{t('common.status')}</TableHead>
+                            <TableHead><span className="sr-only">{t('common.actions')}</span></TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -58,7 +57,7 @@ export default function SupportTicketsTable() {
                                 </TableCell>
                                 <TableCell className="text-right">
                                     <Button variant="outline" size="sm">
-                                        View
+                                        {t('common.view')}
                                         <ArrowRight className="h-4 w-4 ml-2" />
                                     </Button>
                                 </TableCell>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -11,6 +12,7 @@ import {
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 const pendingLoans = [
     { id: 'loan_3', user: 'John Doe', requested_at: '2024-07-18', amount: 'RWF 1,000,000', months: 24 },
@@ -20,19 +22,20 @@ const pendingLoans = [
 
 
 export default function AdminPendingLoans() {
+    const { t } = useLanguage();
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Pending Loan Applications</CardTitle>
-                <CardDescription>Review and approve or reject new loan requests.</CardDescription>
+                <CardTitle>{t('admin.dashboard.pendingLoans.title')}</CardTitle>
+                <CardDescription>{t('admin.dashboard.pendingLoans.description')}</CardDescription>
             </CardHeader>
             <CardContent>
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>User</TableHead>
-                            <TableHead>Amount</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
+                            <TableHead>{t('common.users')}</TableHead>
+                            <TableHead>{t('common.amount')}</TableHead>
+                            <TableHead className="text-right">{t('common.actions')}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

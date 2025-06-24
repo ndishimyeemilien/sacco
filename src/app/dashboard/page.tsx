@@ -1,23 +1,27 @@
+
+"use client";
 import { Button } from "@/components/ui/button";
 import DashboardCards from "@/components/dashboard/dashboard-cards";
 import RecentTransactions from "@/components/dashboard/recent-transactions";
 import AccountChart from "@/components/dashboard/account-chart";
 import { PlusCircle } from "lucide-react";
 import Link from 'next/link';
+import { useLanguage } from "@/context/language-context";
 
 export default function DashboardPage() {
+  const { t } = useLanguage();
   return (
     <>
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold md:text-2xl font-headline">Dashboard</h1>
+        <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('dashboard.pageTitle')}</h1>
         <div className="flex items-center gap-2">
             <Link href="/dashboard/withdraw">
-                <Button size="sm" variant="outline">Withdraw Funds</Button>
+                <Button size="sm" variant="outline">{t('dashboard.withdrawFunds')}</Button>
             </Link>
             <Link href="/dashboard/loans">
                 <Button size="sm">
                     <PlusCircle className="h-4 w-4 mr-2" />
-                    Apply for Loan
+                    {t('dashboard.applyForLoan')}
                 </Button>
             </Link>
         </div>

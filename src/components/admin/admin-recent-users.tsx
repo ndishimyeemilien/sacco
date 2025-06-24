@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useLanguage } from "@/context/language-context";
 
 
 const recentUsers = [
@@ -21,11 +23,12 @@ const recentUsers = [
 
 
 export default function AdminRecentUsers() {
+    const { t } = useLanguage();
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Recent Sign-ups</CardTitle>
-                <CardDescription>New members who joined this week.</CardDescription>
+                <CardTitle>{t('admin.dashboard.recentUsers.title')}</CardTitle>
+                <CardDescription>{t('admin.dashboard.recentUsers.description')}</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
@@ -36,7 +39,7 @@ export default function AdminRecentUsers() {
                         </Avatar>
                         <div className="ml-4 space-y-1">
                             <p className="text-sm font-medium leading-none">{user.name}</p>
-                            <p className="text-sm text-muted-foreground">Joined on {user.joined}</p>
+                            <p className="text-sm text-muted-foreground">{t('admin.dashboard.recentUsers.joinedOn', { date: user.joined })}</p>
                         </div>
                     </div>
                 ))}

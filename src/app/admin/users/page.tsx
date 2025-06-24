@@ -1,3 +1,5 @@
+
+"use client";
 import {
     Table,
     TableBody,
@@ -9,6 +11,7 @@ import {
   import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
   import { Button } from "@/components/ui/button";
   import { MoreHorizontal } from "lucide-react";
+  import { useLanguage } from "@/context/language-context";
   
   const users = [
     { id: 'usr_1', name: 'Alice Johnson', phone: '0788111222', idCard: '11990...', joined: '2024-07-21' },
@@ -20,23 +23,24 @@ import {
 ];
   
   export default function AdminUsersPage() {
+    const { t } = useLanguage();
     return (
       <div className="flex flex-col gap-4 lg:gap-6">
-        <h1 className="text-lg font-semibold md:text-2xl font-headline">Manage Users</h1>
+        <h1 className="text-lg font-semibold md:text-2xl font-headline">{t('admin.users.pageTitle')}</h1>
         <Card>
             <CardHeader>
-                <CardTitle>All Users</CardTitle>
-                <CardDescription>View, edit, or manage user accounts.</CardDescription>
+                <CardTitle>{t('admin.users.cardTitle')}</CardTitle>
+                <CardDescription>{t('admin.users.cardDescription')}</CardDescription>
             </CardHeader>
             <CardContent>
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Phone Number</TableHead>
-                        <TableHead className="hidden md:table-cell">Rwandan ID</TableHead>
-                        <TableHead className="hidden md:table-cell">Date Joined</TableHead>
-                        <TableHead><span className="sr-only">Actions</span></TableHead>
+                        <TableHead>{t('common.name')}</TableHead>
+                        <TableHead>{t('admin.users.phone')}</TableHead>
+                        <TableHead className="hidden md:table-cell">{t('admin.users.id')}</TableHead>
+                        <TableHead className="hidden md:table-cell">{t('admin.users.dateJoined')}</TableHead>
+                        <TableHead><span className="sr-only">{t('common.actions')}</span></TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -60,4 +64,3 @@ import {
       </div>
     );
   }
-  

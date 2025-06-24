@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -29,6 +30,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export default function DashboardLayout({
   children,
@@ -36,12 +39,13 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { t } = useLanguage();
 
   const navItems = [
-    { href: "/dashboard", icon: Home, label: "Dashboard" },
-    { href: "/dashboard/loans", icon: Landmark, label: "Loans" },
-    { href: "/dashboard/withdraw", icon: CircleDollarSign, label: "Withdrawals" },
-    { href: "/dashboard/support", icon: HelpCircle, label: "Support" },
+    { href: "/dashboard", icon: Home, label: t('common.dashboard') },
+    { href: "/dashboard/loans", icon: Landmark, label: t('common.loans') },
+    { href: "/dashboard/withdraw", icon: CircleDollarSign, label: t('common.withdrawals') },
+    { href: "/dashboard/support", icon: HelpCircle, label: t('common.support') },
   ];
 
   return (
@@ -60,7 +64,7 @@ export default function DashboardLayout({
                 <path d="M 30 45 C 32 30 40 30 42 40 L 45 35 L 40 32 L 37 37 C 36 35 32 35 30 45 Z" fill="#facc15" />
                 <path d="M 40 50 C 42 35 50 35 52 45 L 55 40 L 50 37 L 47 42 C 46 40 42 40 40 50 Z" fill="#fde047" />
               </svg>
-              <span className="font-headline">SACCO Connect</span>
+              <span className="font-headline">{t('common.appName')}</span>
             </Link>
           </div>
           <div className="flex-1">
@@ -83,15 +87,15 @@ export default function DashboardLayout({
           <div className="mt-auto p-4">
             <Card>
               <CardHeader className="p-2 pt-0 md:p-4">
-                <CardTitle>Need Help?</CardTitle>
+                <CardTitle>{t('dashboard.layout.helpTitle')}</CardTitle>
                 <CardDescription>
-                  Contact our support team if you have any questions.
+                  {t('dashboard.layout.helpDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
                 <Link href="/dashboard/support">
                   <Button size="sm" className="w-full">
-                    Contact Support
+                    {t('dashboard.layout.contactSupport')}
                   </Button>
                 </Link>
               </CardContent>
@@ -128,7 +132,7 @@ export default function DashboardLayout({
                     <path d="M 30 45 C 32 30 40 30 42 40 L 45 35 L 40 32 L 37 37 C 36 35 32 35 30 45 Z" fill="#facc15" />
                     <path d="M 40 50 C 42 35 50 35 52 45 L 55 40 L 50 37 L 47 42 C 46 40 42 40 40 50 Z" fill="#fde047" />
                   </svg>
-                  <span className="font-headline sr-only">SACCO Connect</span>
+                  <span className="font-headline sr-only">{t('common.appName')}</span>
                 </Link>
                 {navItems.map((item) => (
                   <Link
@@ -149,6 +153,7 @@ export default function DashboardLayout({
           <div className="w-full flex-1">
             {/* Can add a search bar here if needed */}
           </div>
+          <LanguageSwitcher />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
@@ -157,13 +162,13 @@ export default function DashboardLayout({
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>{t('dashboard.layout.accountMenu')}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuItem>{t('common.profile')}</DropdownMenuItem>
+              <DropdownMenuItem>{t('common.settings')}</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/">Logout</Link>
+                <Link href="/">{t('common.logout')}</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

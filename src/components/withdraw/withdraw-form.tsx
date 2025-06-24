@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -11,25 +12,27 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CircleDollarSign } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 export default function WithdrawForm() {
+    const { t } = useLanguage();
     return (
         <Card>
             <CardHeader>
-                <CardTitle>New Withdrawal</CardTitle>
+                <CardTitle>{t('withdraw.form.title')}</CardTitle>
                 <CardDescription>
-                    Request a withdrawal to your registered mobile money account (0788123456).
+                    {t('withdraw.form.description')}
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <form className="grid gap-4">
                     <div className="grid gap-2">
-                        <Label htmlFor="amount">Amount (RWF)</Label>
-                        <Input id="amount" type="number" placeholder="Enter amount" />
+                        <Label htmlFor="amount">{t('withdraw.form.amountLabel')}</Label>
+                        <Input id="amount" type="number" placeholder={t('withdraw.form.amountPlaceholder')} />
                     </div>
                     <Button type="submit" className="w-full mt-2">
                         <CircleDollarSign className="h-4 w-4 mr-2" />
-                        Request Withdrawal
+                        {t('withdraw.form.button')}
                     </Button>
                 </form>
             </CardContent>

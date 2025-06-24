@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -18,6 +19,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/context/language-context";
 
 const stepOneSchema = z.object({
   phoneNumber: z.string().regex(/^07\d{8}$/, {
@@ -41,6 +43,7 @@ export default function SignupForm() {
   const [formData, setFormData] = useState<StepOneValues | null>(null);
   const router = useRouter();
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const stepOneForm = useForm<StepOneValues>({
     resolver: zodResolver(stepOneSchema),
@@ -58,7 +61,6 @@ export default function SignupForm() {
   });
 
   function handleStepOneSubmit(values: StepOneValues) {
-    // In a real app, you'd call an API to send the verification code
     console.log("Sending verification code to:", values.phoneNumber);
     toast({
       title: "Verification Code Sent",
@@ -69,7 +71,6 @@ export default function SignupForm() {
   }
 
   function handleStepTwoSubmit(values: z.infer<typeof stepTwoSchema>) {
-    // In a real app, you'd verify the code with your backend
     console.log("Verifying code:", values.verificationCode, "for user:", formData);
      toast({
       title: "Account Created!",
@@ -83,9 +84,9 @@ export default function SignupForm() {
       {step === 1 && (
         <>
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold font-headline">Sign Up</h1>
+            <h1 className="text-3xl font-bold font-headline">{t('signup.title')}</h1>
             <p className="text-balance text-muted-foreground">
-              Enter your details to create your account
+              {t('signup.description')}
             </p>
           </div>
           <Form {...stepOneForm}>
@@ -98,11 +99,11 @@ export default function SignupForm() {
                 name="phoneNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel>{t('signup.phoneLabel')}</FormLabel>
                     <FormControl>
                       <Input
                         type="tel"
-                        placeholder="07..."
+                        placeholder={t('signup.phonePlaceholder')}
                         {...field}
                       />
                     </FormControl>
@@ -115,10 +116,10 @@ export default function SignupForm() {
                 name="rwandanId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Rwandan ID Card</FormLabel>
+                    <FormLabel>{t('signup.idLabel')}</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="11990..."
+                        placeholder={t('signup.idPlaceholder')}
                         {...field}
                       />
                     </FormControl>
@@ -127,14 +128,14 @@ export default function SignupForm() {
                 )}
               />
               <Button type="submit" className="w-full">
-                Continue
+                {t('signup.continueButton')}
               </Button>
             </form>
           </Form>
            <div className="mt-4 text-center text-sm">
-            Already have an account?{" "}
+            {t('signup.loginPrompt')}{" "}
             <Link href="/" className="underline">
-              Login
+              {t('common.login')}
             </Link>
           </div>
         </>
@@ -143,9 +144,9 @@ export default function SignupForm() {
       {step === 2 && formData && (
         <>
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold font-headline">Verify Your Phone</h1>
+            <h1 className="text-3xl font-bold font-headline">{t('signup.verifyTitle')}</h1>
             <p className="text-balance text-muted-foreground">
-              Enter the 6-digit code sent to {formData.phoneNumber}
+              {t('signup.verifyDescription', { phoneNumber: formData.phoneNumber })}
             </p>
           </div>
           <Form {...stepTwoForm}>
@@ -158,10 +159,10 @@ export default function SignupForm() {
                 name="verificationCode"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Verification Code</FormLabel>
+                    <FormLabel>{t('signup.verifyCodeLabel')}</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="123456"
+                        placeholder={t('signup.verifyCodePlaceholder')}
                         {...field}
                       />
                     </FormControl>
@@ -170,10 +171,10 @@ export default function SignupForm() {
                 )}
               />
               <Button type="submit" className="w-full">
-                Verify & Create Account
+                {t('signup.verifyButton')}
               </Button>
                <Button variant="outline" onClick={() => setStep(1)}>
-                  Go Back
+                  {t('signup.goBackButton')}
                 </Button>
             </form>
           </Form>

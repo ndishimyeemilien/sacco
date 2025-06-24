@@ -1,6 +1,10 @@
+
+"use client";
 import SignupForm from '@/components/auth/signup-form';
+import { useLanguage } from '@/context/language-context';
 
 export default function SignupPage() {
+  const { t } = useLanguage();
   return (
     <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
       <div className="flex items-center justify-center py-12">
@@ -20,10 +24,10 @@ export default function SignupPage() {
               <path d="M 40 50 C 42 35 50 35 52 45 L 55 40 L 50 37 L 47 42 C 46 40 42 40 40 50 Z" fill="#fde047" />
             </svg>
             <h2 className="mt-6 text-4xl font-bold font-headline">
-              SACCO Connect
+              {t('common.appName')}
             </h2>
             <p className="mt-2 text-lg text-white/80">
-              Your trusted partner in financial growth.
+              {t('common.description')}
             </p>
           </div>
         </div>

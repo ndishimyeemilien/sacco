@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -16,17 +17,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useLanguage } from '@/context/language-context';
 
 const loginSchema = z.object({
   phoneNumber: z.string().min(1, { message: "This field is required." }),
   rwandanId: z.string(),
 }).superRefine((data, ctx) => {
   if (data.phoneNumber.toLowerCase() === '{saccomoney}') {
-    // Admin login, rwandanId is not required to be validated
     return;
   }
-
-  // Regular user login
   if (!/^07\d{8}$/.test(data.phoneNumber)) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
@@ -45,6 +44,7 @@ const loginSchema = z.object({
 
 export default function LoginForm() {
   const router = useRouter();
+  const { t } = useLanguage();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -58,7 +58,6 @@ export default function LoginForm() {
   const isAdminLogin = phoneNumberValue.toLowerCase() === '{saccomoney}';
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
-    // In a real app, you'd verify credentials and roles against a backend
     if (isAdminLogin) {
       console.log("Logging in as Admin");
       router.push("/admin/dashboard");
@@ -71,9 +70,9 @@ export default function LoginForm() {
   return (
     <div className="mx-auto grid w-[350px] gap-6">
       <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-bold font-headline">Login</h1>
+        <h1 className="text-3xl font-bold font-headline">{t('login.title')}</h1>
         <p className="text-balance text-muted-foreground">
-          Enter your phone number and ID to login
+          {t('login.description')}
         </p>
       </div>
       <Form {...form}>
@@ -86,11 +85,11 @@ export default function LoginForm() {
             name="phoneNumber"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number or Admin Code</FormLabel>
+                <FormLabel>{t('login.phoneLabel')}</FormLabel>
                 <FormControl>
                   <Input
                     type="tel"
-                    placeholder="07... or {saccomoney}"
+                    placeholder={t('login.phonePlaceholder')}
                     {...field}
                   />
                 </FormControl>
@@ -104,19 +103,19 @@ export default function LoginForm() {
             render={({ field }) => (
               <FormItem>
                  <div className="flex items-center">
-                  <FormLabel>Rwandan ID Card</FormLabel>
+                  <FormLabel>{t('login.idLabel')}</FormLabel>
                   {!isAdminLogin && (
                     <Link
                       href="#"
                       className="ml-auto inline-block text-sm underline"
                     >
-                      Forgot your ID?
+                      {t('login.forgotId')}
                     </Link>
                   )}
                 </div>
                 <FormControl>
                   <Input
-                    placeholder="11990..."
+                    placeholder={t('login.idPlaceholder')}
                     {...field}
                     disabled={isAdminLogin}
                   />
@@ -126,14 +125,14 @@ export default function LoginForm() {
             )}
           />
           <Button type="submit" className="w-full">
-            Login
+            {t('login.loginButton')}
           </Button>
         </form>
       </Form>
       <div className="mt-4 text-center text-sm">
-        Don&apos;t have an account?{" "}
+        {t('login.signupPrompt')}{" "}
         <Link href="/signup" className="underline">
-          Sign up
+          {t('common.signup')}
         </Link>
       </div>
     </div>

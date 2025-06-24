@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -22,6 +23,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export default function AdminLayout({
   children,
@@ -29,12 +32,13 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { t } = useLanguage();
 
   const navItems = [
-    { href: "/admin/dashboard", icon: LayoutGrid, label: "Dashboard" },
-    { href: "/admin/users", icon: Users, label: "Users" },
-    { href: "/admin/loans", icon: Landmark, label: "Loans" },
-    { href: "/admin/settings", icon: Settings, label: "Settings" },
+    { href: "/admin/dashboard", icon: LayoutGrid, label: t('common.dashboard') },
+    { href: "/admin/users", icon: Users, label: t('common.users') },
+    { href: "/admin/loans", icon: Landmark, label: t('common.loans') },
+    { href: "/admin/settings", icon: Settings, label: t('common.settings') },
   ];
 
   return (
@@ -53,7 +57,7 @@ export default function AdminLayout({
                 <path d="M 30 45 C 32 30 40 30 42 40 L 45 35 L 40 32 L 37 37 C 36 35 32 35 30 45 Z" fill="#facc15" />
                 <path d="M 40 50 C 42 35 50 35 52 45 L 55 40 L 50 37 L 47 42 C 46 40 42 40 40 50 Z" fill="#fde047" />
               </svg>
-              <span className="font-headline">SACCO Admin</span>
+              <span className="font-headline">{t('common.adminAppName')}</span>
             </Link>
           </div>
           <div className="flex-1">
@@ -104,7 +108,7 @@ export default function AdminLayout({
                     <path d="M 30 45 C 32 30 40 30 42 40 L 45 35 L 40 32 L 37 37 C 36 35 32 35 30 45 Z" fill="#facc15" />
                     <path d="M 40 50 C 42 35 50 35 52 45 L 55 40 L 50 37 L 47 42 C 46 40 42 40 40 50 Z" fill="#fde047" />
                   </svg>
-                  <span className="font-headline">SACCO Admin</span>
+                  <span className="font-headline">{t('common.adminAppName')}</span>
                 </Link>
                 {navItems.map((item) => (
                   <Link
@@ -125,6 +129,7 @@ export default function AdminLayout({
           <div className="w-full flex-1">
             {/* Can add a search bar here if needed */}
           </div>
+          <LanguageSwitcher />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
@@ -133,13 +138,13 @@ export default function AdminLayout({
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Admin Account</DropdownMenuLabel>
+              <DropdownMenuLabel>{t('admin.dashboard.layout.account')}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuItem>{t('common.profile')}</DropdownMenuItem>
+              <DropdownMenuItem>{t('common.settings')}</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/">Logout</Link>
+                <Link href="/">{t('common.logout')}</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
