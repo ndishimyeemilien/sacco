@@ -200,10 +200,21 @@ export const rw = {
             phone: "Nimero ya telefone",
             id: "Indangamuntu",
             dateJoined: "Itariki yinjiriye",
+            details: {
+                title: "Amakuru y'umukoresha"
+            },
+            transactions: {
+                title: "Amateka y'Ibikorwa",
+                description: "Amateka y'ibikorwa bya {{name}}.",
+                descriptionHeader: "Ibisobanuro",
+                type: "Ubwoko",
+                noTransactions: "Nta gikorwa cyabonetse kuri uyu mukoresha."
+            },
             actions: {
                 title: "Ibikorwa",
                 deposit: "Kubitsa",
                 withdraw: "Kubikuza",
+                viewDetails: "Reba Amakuru",
                 depositDialogTitle: "Kora Ububiko",
                 withdrawDialogTitle: "Kora ikubikuza",
                 dialogDescription: "Shyiramo umubare wo {{action}} kuri {{name}} ({{phone}}).",

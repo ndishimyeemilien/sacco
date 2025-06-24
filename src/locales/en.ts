@@ -200,10 +200,21 @@ export const en = {
             phone: "Phone Number",
             id: "Rwandan ID",
             dateJoined: "Date Joined",
+            details: {
+                title: "User Details"
+            },
+            transactions: {
+                title: "Transaction History",
+                description: "Transaction history for {{name}}.",
+                descriptionHeader: "Description",
+                type: "Type",
+                noTransactions: "No transactions found for this user."
+            },
             actions: {
                 title: "Actions",
                 deposit: "Deposit",
                 withdraw: "Withdraw",
+                viewDetails: "View Details",
                 depositDialogTitle: "Make a Deposit",
                 withdrawDialogTitle: "Make a Withdrawal",
                 dialogDescription: "Enter the amount to {{action}} for {{name}} ({{phone}}).",

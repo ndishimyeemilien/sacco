@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import {
   Dialog,
@@ -20,7 +22,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MoreHorizontal, ArrowDownCircle, ArrowUpCircle } from "lucide-react";
+import { MoreHorizontal, ArrowDownCircle, ArrowUpCircle, Eye } from "lucide-react";
 import { useLanguage } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
 
@@ -59,8 +61,6 @@ export default function UserActions({ user }: { user: User }) {
   };
 
   const handleVerificationSubmit = () => {
-    // In a real app, you would verify this code against a backend service.
-    // For this simulation, we'll just check for a 6-digit code.
     if (verificationCode.length !== 6) {
       toast({
         title: t('admin.users.actions.invalidCodeTitle'),
@@ -113,6 +113,13 @@ export default function UserActions({ user }: { user: User }) {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>{t('admin.users.actions.title')}</DropdownMenuLabel>
+          <DropdownMenuItem asChild>
+            <Link href={`/admin/users/${user.id}`}>
+                <Eye className="mr-2 h-4 w-4" />
+                <span>{t('admin.users.actions.viewDetails')}</span>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setDialogType("deposit")}>
             <ArrowUpCircle className="mr-2 h-4 w-4" />
             <span>{t('admin.users.actions.deposit')}</span>

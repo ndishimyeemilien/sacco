@@ -12,13 +12,15 @@ import {
   import { useLanguage } from "@/context/language-context";
   import UserActions from "@/components/admin/user-actions";
   
-  const users = [
-    { id: 'usr_1', name: 'Alice Johnson', phone: '0788111222', idCard: '11990...', joined: '2024-07-21' },
-    { id: 'usr_2', name: 'Bob Williams', phone: '0788222333', idCard: '11991...', joined: '2024-07-20' },
-    { id: 'usr_3', name: 'Charlie Brown', phone: '0788333444', idCard: '11992...', joined: '2024-07-19' },
-    { id: 'usr_4', name: 'Diana Miller', phone: '0788444555', idCard: '11993...', joined: '2024-07-19' },
-    { id: 'usr_5', name: 'John Doe', phone: '0788123456', idCard: '1198...', joined: '2024-01-10' },
-    { id: 'usr_6', name: 'Jane Smith', phone: '0788654321', idCard: '1197...', joined: '2024-02-15' },
+  export const users = [
+    { id: 'usr_1', name: 'Alice Johnson', phone: '0788111222', idCard: '1199012345678901', joined: '2024-07-21' },
+    { id: 'usr_2', name: 'Bob Williams', phone: '0788222333', idCard: '1199123456789012', joined: '2024-07-20' },
+    { id: 'usr_3', name: 'Charlie Brown', phone: '0788333444', idCard: '1199223456789012', joined: '2024-07-19' },
+    { id: 'usr_4', name: 'Diana Miller', phone: '0788444555', idCard: '1199323456789012', joined: '2024-07-19' },
+    { id: 'usr_5', name: 'John Doe', phone: '0788123456', idCard: '1198423456789012', joined: '2024-01-10' },
+    { id: 'usr_6', name: 'Jane Smith', phone: '0788654321', idCard: '1197523456789012', joined: '2024-02-15' },
+    { id: 'usr_7', name: 'Kevin Gatera', phone: '0788777888', idCard: '2199523456789012', joined: '2024-03-01' },
+    { id: 'usr_8', name: 'Marie Claire', phone: '0788999000', idCard: '2198823456789012', joined: '2024-05-11' },
 ];
   
   export default function AdminUsersPage() {

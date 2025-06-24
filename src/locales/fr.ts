@@ -200,10 +200,21 @@ export const fr = {
             phone: "Numéro de téléphone",
             id: "ID rwandais",
             dateJoined: "Date d'inscription",
+            details: {
+                title: "Détails de l'utilisateur"
+            },
+            transactions: {
+                title: "Historique des transactions",
+                description: "Historique des transactions pour {{name}}.",
+                descriptionHeader: "Description",
+                type: "Type",
+                noTransactions: "Aucune transaction trouvée pour cet utilisateur."
+            },
             actions: {
                 title: "Actions",
                 deposit: "Déposer",
                 withdraw: "Retirer",
+                viewDetails: "Voir les détails",
                 depositDialogTitle: "Effectuer un dépôt",
                 withdrawDialogTitle: "Effectuer un retrait",
                 dialogDescription: "Entrez le montant à {{action}} pour {{name}} ({{phone}}).",
