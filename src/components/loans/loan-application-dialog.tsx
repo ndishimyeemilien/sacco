@@ -34,6 +34,12 @@ export default function LoanApplicationDialog() {
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="phone" className="text-right">
+              Phone Number
+            </Label>
+            <Input id="phone" type="tel" value="0788123456" className="col-span-3" disabled />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="amount" className="text-right">
               Amount (RWF)
             </Label>
