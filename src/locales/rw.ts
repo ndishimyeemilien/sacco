@@ -212,7 +212,16 @@ export const rw = {
                 successTitle: "Igikorwa Cyagenze neza",
                 successDesc: "Igikorwa cya {{action}} cy'amafaranga {{amount}} RWF kuri {{name}} cyakozwe neza.",
                 invalidAmountTitle: "Umubare utemewe",
-                invalidAmountDesc: "Nyamuneka shyiramo umubare wemewe."
+                invalidAmountDesc: "Nyamuneka shyiramo umubare wemewe.",
+                verificationTitle: "Emeza Igikorwa",
+                verificationDescription: "Kode y'imibare 6 yoherejwe kuri telefone ya {{name}}. Nyamuneka yinjize hano hepfo kugirango wemeze {{action}} y'amafaranga {{amount}} RWF.",
+                verificationCodeLabel: "Kode yo Kwemeza",
+                verificationCodePlaceholder: "123456",
+                continueButton: "Komeza",
+                codeSentTitle: "Kode Yoherejwe",
+                codeSentDesc: "Kode yo kwemeza yoherejwe kuri telefone y'umukoresha.",
+                invalidCodeTitle: "Kode Yemejwe Ntabwo Ariyo",
+                invalidCodeDesc: "Kode yo kwemeza ntabwo ariyo. Nyamuneka gerageza nanone."
             }
         },
         loans: {

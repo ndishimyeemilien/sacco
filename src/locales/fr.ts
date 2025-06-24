@@ -212,7 +212,16 @@ export const fr = {
                 successTitle: "Action réussie",
                 successDesc: "Le {{action}} de {{amount}} RWF pour {{name}} a été traité avec succès.",
                 invalidAmountTitle: "Montant invalide",
-                invalidAmountDesc: "Veuillez entrer un montant valide."
+                invalidAmountDesc: "Veuillez entrer un montant valide.",
+                verificationTitle: "Vérifier la transaction",
+                verificationDescription: "Un code à 6 chiffres a été envoyé au téléphone de {{name}}. Veuillez le saisir ci-dessous pour confirmer le {{action}} de {{amount}} RWF.",
+                verificationCodeLabel: "Code de vérification",
+                verificationCodePlaceholder: "123456",
+                continueButton: "Continuer",
+                codeSentTitle: "Code envoyé",
+                codeSentDesc: "Un code de vérification a été envoyé au téléphone de l'utilisateur.",
+                invalidCodeTitle: "Code invalide",
+                invalidCodeDesc: "Le code de vérification est incorrect. Veuillez réessayer."
             }
         },
         loans: {
