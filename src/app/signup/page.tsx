@@ -12,26 +12,17 @@ export default function SignupPage() {
           <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold font-headline">Sign Up</h1>
             <p className="text-balance text-muted-foreground">
-              Create your SACCO Connect account
+              Enter your details to create your account
             </p>
           </div>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="full-name">Full Name</Label>
-              <Input id="full-name" placeholder="John Doe" required />
+              <Label htmlFor="phone-number">Phone Number</Label>
+              <Input id="phone-number" type="tel" placeholder="07..." required />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" required />
+              <Label htmlFor="id-card">Rwandan ID Card</Label>
+              <Input id="id-card" placeholder="1199080012345678" required />
             </div>
             <Button type="submit" className="w-full" asChild>
               <Link href="/dashboard">Create Account</Link>

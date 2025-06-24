@@ -12,30 +12,30 @@ export default function LoginPage() {
           <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold font-headline">Login</h1>
             <p className="text-balance text-muted-foreground">
-              Enter your email below to login to your account
+              Enter your phone number and ID to login
             </p>
           </div>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="phone-number">Phone Number</Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
+                id="phone-number"
+                type="tel"
+                placeholder="07..."
                 required
               />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="id-card">Rwandan ID Card</Label>
                 <Link
                   href="#"
                   className="ml-auto inline-block text-sm underline"
                 >
-                  Forgot your password?
+                  Forgot your ID?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="id-card" required />
             </div>
             <Button type="submit" className="w-full" asChild>
               <Link href="/dashboard">Login</Link>
